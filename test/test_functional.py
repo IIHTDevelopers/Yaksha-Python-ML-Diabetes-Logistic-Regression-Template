@@ -43,7 +43,7 @@ class TestLogisticRegression(unittest.TestCase):
                 print("TestLoadAndPreprocess = Failed")
         except Exception as e:
             self.test_obj.yakshaAssert("TestLoadAndPreprocess", False, "functional")
-            print(f"TestLoadAndPreprocess = Failed | Exception: {e}")
+            print(f"TestLoadAndPreprocess = Failed}")
 
     def test_train_model(self):
         """
@@ -120,7 +120,7 @@ class TestLogisticRegression(unittest.TestCase):
                 print("TestPredictNewDiabetic = Failed")
         except Exception as e:
             self.test_obj.yakshaAssert("TestPredictNewDiabetic", False, "functional")
-            print(f"TestPredictNewDiabetic = Failed}")
+            print(f"TestPredictNewDiabetic = Failed")
 
     def test_predict_new_non_diabetic(self):
         """
@@ -151,7 +151,7 @@ class TestLogisticRegression(unittest.TestCase):
                 print("TestPredictNewNonDiabetic = Failed")
         except Exception as e:
             self.test_obj.yakshaAssert("TestPredictNewNonDiabetic", False, "functional")
-            print(f"TestPredictNewNonDiabetic = Failed}")
+            print(f"TestPredictNewNonDiabetic = Failed")
 
 
 if __name__ == '__main__':
