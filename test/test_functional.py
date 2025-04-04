@@ -16,6 +16,8 @@ class TestLogisticRegression(unittest.TestCase):
         # Prepare test data
         self.X_train, self.X_test, self.y_train, self.y_test = load_and_preprocess()
         self.model = train_model(self.X_train, self.y_train)
+        
+    
 
         # Test data for predictions
         self.diabetic_patient = (47, 35.1, 90)  # Age, BMI, BP with high diabetic probability
@@ -51,6 +53,8 @@ class TestLogisticRegression(unittest.TestCase):
         """
         try:
             model = train_model(self.X_train, self.y_train)
+            
+           
 
             # Check if model is a LogisticRegression instance
             if isinstance(model, LogisticRegression):
@@ -89,7 +93,7 @@ class TestLogisticRegression(unittest.TestCase):
                 print("TestEvaluateModel = Failed")
         except Exception as e:
             self.test_obj.yakshaAssert("TestEvaluateModel", False, "functional")
-            print(f"TestEvaluateModel = Failed ")
+            print(f"TestEvaluateModel = Failed")
 
     def test_predict_new_diabetic(self):
         """
@@ -105,17 +109,25 @@ class TestLogisticRegression(unittest.TestCase):
             # Create a sample DataFrame for prediction
             sample = pd.DataFrame({'Age': [age], 'BMI': [bmi], 'BloodPressure': [bp]})
 
+           
+            
             # Get the model's prediction
-            prediction = self.model.predict(sample)[0]
+            try:
+                prediction = self.model.predict(sample)[0]
+                
+                # Reset stdout
+                sys.stdout = sys.__stdout__
 
-            # Reset stdout
-            sys.stdout = sys.__stdout__
-
-            # Check if prediction is 1 (is diabetic)
-            if prediction == 1:
-                self.test_obj.yakshaAssert("TestPredictNewDiabetic", True, "functional")
-                print("TestPredictNewDiabetic = Passed")
-            else:
+                # Check if prediction is 1 (is diabetic)
+                if prediction == 1:
+                    self.test_obj.yakshaAssert("TestPredictNewDiabetic", True, "functional")
+                    print("TestPredictNewDiabetic = Passed")
+                else:
+                    self.test_obj.yakshaAssert("TestPredictNewDiabetic", False, "functional")
+                    print("TestPredictNewDiabetic = Failed")
+            except AttributeError as ae:
+                # Reset stdout
+                sys.stdout = sys.__stdout__
                 self.test_obj.yakshaAssert("TestPredictNewDiabetic", False, "functional")
                 print("TestPredictNewDiabetic = Failed")
         except Exception as e:
@@ -136,23 +148,32 @@ class TestLogisticRegression(unittest.TestCase):
             # Create a sample DataFrame for prediction
             sample = pd.DataFrame({'Age': [age], 'BMI': [bmi], 'BloodPressure': [bp]})
 
+           
+            
             # Get the model's prediction
-            prediction = self.model.predict(sample)[0]
+            try:
+                prediction = self.model.predict(sample)[0]
+                
+                # Reset stdout
+                sys.stdout = sys.__stdout__
 
-            # Reset stdout
-            sys.stdout = sys.__stdout__
-
-            # Check if prediction is 0 (not diabetic)
-            if prediction == 0:
-                self.test_obj.yakshaAssert("TestPredictNewNonDiabetic", True, "functional")
-                print("TestPredictNewNonDiabetic = Passed")
-            else:
+                # Check if prediction is 0 (not diabetic)
+                if prediction == 0:
+                    self.test_obj.yakshaAssert("TestPredictNewNonDiabetic", True, "functional")
+                    print("TestPredictNewNonDiabetic = Passed")
+                else:
+                    self.test_obj.yakshaAssert("TestPredictNewNonDiabetic", False, "functional")
+                    print("TestPredictNewNonDiabetic = Failed")
+            except AttributeError as ae:
+                # Reset stdout
+                sys.stdout = sys.__stdout__
                 self.test_obj.yakshaAssert("TestPredictNewNonDiabetic", False, "functional")
                 print("TestPredictNewNonDiabetic = Failed")
         except Exception as e:
             self.test_obj.yakshaAssert("TestPredictNewNonDiabetic", False, "functional")
-            print(f"TestPredictNewNonDiabetic = Failed")
+            print(f"TestPredictNewNonDiabetic = Failed:")
 
 
 if __name__ == '__main__':
+    # Run the tests
     unittest.main()
