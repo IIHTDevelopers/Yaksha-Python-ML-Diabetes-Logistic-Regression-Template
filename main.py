@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
+import numpy as np
 
 # Function 1: Load and preprocess data
 def load_and_preprocess(filename='diabetes_data.csv'):
@@ -20,10 +21,13 @@ def load_and_preprocess(filename='diabetes_data.csv'):
     
     Returns:
     tuple: (X_train, X_test, y_train, y_test) - Split datasets for training and testing
+    Dummy data is provided you will need to change it accordingly 
     """
-    # Placeholder implementation that will make tests fail but not error out
-    # Return empty lists instead of None to avoid "NoneType has no len()" errors
-    X_train, X_test, y_train, y_test = [], [], [], []
+   
+    X_train = np.array([[0, 0, 0]])
+    X_test = np.array([[0, 0, 0]])
+    y_train = np.array([0])
+    y_test = np.array([0])
     return X_train, X_test, y_train, y_test
 
 # Function 2: Train logistic regression model
@@ -43,10 +47,8 @@ def train_model(X_train, y_train):
     Returns:
     LogisticRegression: Trained logistic regression model
     """
-    # Placeholder implementation that will make tests fail but not error out
-    # Return an empty LogisticRegression model to avoid NoneType errors
-    model = LogisticRegression()
-    return model
+   
+    return None
 
 # Function 3: Evaluate the model
 def evaluate_model(model, X_test, y_test):
@@ -67,9 +69,8 @@ def evaluate_model(model, X_test, y_test):
     Returns:
     None: This function prints evaluation metrics but doesn't return anything
     """
-    # Placeholder implementation that will make tests fail but not error out
-    # Print minimal output to avoid errors, but not enough to pass the test
     print("Evaluation Results:")
+    print("Accuracy: 0.00")
 
 # Function 4: Predict for a new patient
 def predict_new(model, age, bmi, bp):
@@ -89,10 +90,10 @@ def predict_new(model, age, bmi, bp):
     
     Returns:
     None: This function prints the prediction but doesn't return anything
+    dummy data provided you will need to change it accordingly 
     """
-    # Placeholder implementation that will make tests fail but not error out
-    # Create a sample DataFrame but don't make any predictions
-    sample = pd.DataFrame({'Age': [age], 'BMI': [bmi], 'BloodPressure': [bp]})
+  
+    print(f"Patient with Age={age}, BMI={bmi}, and BP={bp} is not diabetic.\n")
 
 # Function 5: Full workflow execution
 def run_pipeline():
