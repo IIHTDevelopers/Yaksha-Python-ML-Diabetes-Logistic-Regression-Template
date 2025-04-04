@@ -43,7 +43,7 @@ class TestLogisticRegression(unittest.TestCase):
                 print("TestLoadAndPreprocess = Failed")
         except Exception as e:
             self.test_obj.yakshaAssert("TestLoadAndPreprocess", False, "functional")
-            print(f"TestLoadAndPreprocess = Failed}")
+            print(f"TestLoadAndPreprocess = Failed")
 
     def test_train_model(self):
         """
